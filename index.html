@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Student Performance Analysis using Business Analytics</title>
+<style>
+:root{--bg:#f4f7fa;--card:#fff;--ink:#13202d;--mut:#5a6b7b;--line:#e1e7ee;--a:#0f766e;--b:#d97706;--c:#4f46e5;--r:#dc2626;--hero:#0b2f3a;--soft:#e6f3f1;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0d1419;--card:#16212a;--ink:#e8eef3;--mut:#93a4b3;--line:#263642;--a:#2dd4bf;--b:#fbbf24;--c:#818cf8;--r:#f87171;--hero:#08222b;--soft:#12302f;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0d1419;--card:#16212a;--ink:#e8eef3;--mut:#93a4b3;--line:#263642;--a:#2dd4bf;--b:#fbbf24;--c:#818cf8;--r:#f87171;--hero:#08222b;--soft:#12302f;color-scheme:dark}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+header.hero{background:var(--hero);color:#fff;padding:56px 0 64px}
+.tag{display:inline-block;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:#7fe3d6;border:1px solid #2b6b68;padding:4px 10px;border-radius:99px}
+h1{font-size:clamp(28px,5vw,46px);line-height:1.12;margin:16px 0 12px;max-width:760px}
+.hero p{max-width:620px;color:#c4d6dc;margin:0 0 22px}
+.btn{display:inline-block;background:#d97706;color:#fff;text-decoration:none;padding:10px 20px;border-radius:8px;font-weight:600}
+section{padding:36px 0 8px}
+h2{font-size:24px;margin:0 0 6px}
+.sub{color:var(--mut);margin:0 0 18px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 18px}
+.chip{border:1px solid var(--line);background:var(--card);color:var(--ink);padding:7px 16px;border-radius:99px;cursor:pointer;font:inherit;font-size:14px}
+.chip.on{background:var(--a);border-color:var(--a);color:#fff}
+.grid{display:grid;gap:16px}
+.k5{grid-template-columns:repeat(auto-fit,minmax(170px,1fr))}
+.g2{grid-template-columns:repeat(auto-fit,minmax(320px,1fr))}
+.g4{grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px}
+.kpi b{display:block;font-size:30px;line-height:1.1}
+.kpi span{color:var(--mut);font-size:13px}
+.card h3{margin:0 0 4px;font-size:17px}
+.card p.n{margin:0 0 10px;color:var(--mut);font-size:13px}
+svg{width:100%;height:auto;display:block}
+svg text{fill:var(--mut);font:11px system-ui,sans-serif}
+.step{border-top:4px solid var(--a)}
+.step:nth-child(2){border-color:var(--c)}.step:nth-child(3){border-color:var(--b)}.step:nth-child(4){border-color:var(--r)}
+.step small{color:var(--mut);text-transform:uppercase;letter-spacing:.06em;font-size:11px}
+.scroll{overflow-x:auto}
+table{border-collapse:collapse;width:100%;min-width:560px;font-size:14px}
+th,td{text-align:left;padding:9px 10px;border-bottom:1px solid var(--line)}
+th{color:var(--mut);font-weight:600;font-size:12px;text-transform:uppercase;letter-spacing:.05em}
+.pill{padding:2px 9px;border-radius:99px;font-size:12px;background:var(--soft);color:var(--a)}
+.pill.r{background:rgba(220,38,38,.12);color:var(--r)}
+ul.ins{margin:0;padding-left:20px}ul.ins li{margin:6px 0}
+.panel{margin-bottom:16px}.ph{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+.ctl{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px 22px;margin:6px 0}
+.ctl label{display:block;font-size:14px}.ctl output{float:right;font-weight:600;color:var(--a)}
+.ctl input{width:100%;accent-color:var(--a);margin-top:6px}
+.res{display:flex;align-items:baseline;gap:14px;margin-top:12px;flex-wrap:wrap}.res b{font-size:40px}.res span{color:var(--mut)}
+footer{padding:30px 0 40px;color:var(--mut);font-size:13px}
+</style>
+</head>
+<body>
+<header class="hero"><div class="wrap">
+<span class="tag">Business Analytics Project</span>
+<h1>Student Performance Analysis using Business Analytics</h1>
+<p>Which factors move a student’s results, and who needs help first? An interactive dashboard that turns academic records into decisions: describe, diagnose, predict and prescribe.</p>
+<a class="btn" href="#dash">Explore the dashboard</a>
+</div></header>
+
+<main class="wrap">
+<section>
+<h2>The four stages of analytics</h2>
+<p class="sub">The dashboard below follows the standard business analytics ladder.</p>
+<div class="grid g4">
+<div class="card step"><small>1 · Descriptive</small><h3>What happened?</h3><p class="n">Averages, pass rate and grade distribution across departments.</p></div>
+<div class="card step"><small>2 · Diagnostic</small><h3>Why did it happen?</h3><p class="n">Correlation of attendance, study hours, assignments and past GPA with scores.</p></div>
+<div class="card step"><small>3 · Predictive</small><h3>What will happen?</h3><p class="n">A fitted trend line estimates the score gain from better attendance.</p></div>
+<div class="card step"><small>4 · Prescriptive</small><h3>What should we do?</h3><p class="n">A ranked at-risk list with a suggested action for each student.</p></div>
+</div>
+</section>
+
+<section id="dash">
+<h2>Performance dashboard</h2>
+<p class="sub">Use the control panel to change the department, the thresholds and an improvement scenario. Every chart, figure and table recalculates instantly.</p>
+<div class="card panel">
+<div class="ph"><h3>Control panel</h3><button class="chip" id="reset">Reset all</button></div>
+<div class="chips" id="chips" role="group" aria-label="Department filter"></div>
+<div class="ctl">
+<label>Pass mark <output id="o1"></output><input type="range" id="pm" min="30" max="70" value="50"></label>
+<label>At risk if score is below <output id="o2"></output><input type="range" id="rs" min="40" max="70" value="55"></label>
+<label>At risk if attendance is below <output id="o3"></output><input type="range" id="ra" min="50" max="90" value="70"></label>
+<label>Scenario: attendance boost <output id="o4"></output><input type="range" id="ba" min="0" max="20" value="0"></label>
+<label>Scenario: study-hours boost <output id="o5"></output><input type="range" id="bh" min="0" max="10" value="0"></label>
+</div>
+<p class="n" id="scn" style="margin:10px 0 0"></p>
+</div>
+<div class="grid k5" id="kpis"></div>
+</section>
+
+<section>
+<div class="grid g2">
+<div class="card"><h3>Grade distribution</h3><p class="n">Number of students per grade band.</p><div id="c1"></div></div>
+<div class="card"><h3>Attendance vs final score</h3><p class="n" id="n2"></p><div id="c2"></div></div>
+<div class="card"><h3>Average score by subject</h3><p class="n">Out of 100.</p><div id="c3"></div></div>
+<div class="card"><h3>What drives the score?</h3><p class="n">Correlation (r) with final score; closer to 1 means a stronger link.</p><div id="c4"></div></div>
+</div>
+</section>
+
+<section>
+<h2>What-if predictor</h2>
+<p class="sub">Set a student’s profile and see the score the regression model predicts.</p>
+<div class="card"><div class="ctl">
+<label>Attendance <output id="p1"></output><input type="range" id="wa" min="50" max="100" value="80"></label>
+<label>Study hours per week <output id="p2"></output><input type="range" id="wh" min="1" max="35" value="14"></label>
+<label>Assignments <output id="p3"></output><input type="range" id="ws" min="30" max="100" value="70"></label>
+<label>Previous GPA <output id="p4"></output><input type="range" id="wg" min="4" max="10" step="0.1" value="7"></label>
+</div><div class="res" id="pr"></div></div>
+</section>
+
+<section>
+<h2>Insights</h2>
+<div class="card"><ul class="ins" id="ins"></ul></div>
+</section>
+
+<section>
+<h2>Students who need support first</h2>
+<p class="sub" id="rsub"></p>
+<div class="card scroll"><table><thead><tr><th>Student</th><th>Dept</th><th>Attendance</th><th>Study hrs/wk</th><th>Final score</th><th>Suggested action</th></tr></thead><tbody id="tb"></tbody></table></div>
+</section>
+</main>
+
+<footer><div class="wrap">Data note: the 160 student records here are a synthetic sample generated in the page for demonstration. Replace the generator in the script with your own records to analyse real results.</div></footer>
+
+<script>
+let s=42;const rnd=()=>(s=(s*1664525+1013904223)%4294967296)/4294967296;
+const gauss=()=>{let u=0;for(let i=0;i<6;i++)u+=rnd();return(u-3)/Math.sqrt(.5)};
+const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
+const depts=['CSE','ECE','MECH','CIVIL'],subs=['Mathematics','Programming','Physics','Data Analytics','English'],off=[-4,2,-3,3,5];
+const D=[];
+for(let i=0;i<160;i++){
+ const dept=depts[i%4],att=clamp(Math.round(78+gauss()*11),50,100);
+ const hrs=clamp(Math.round(14+gauss()*6+(att-78)*.15),1,35);
+ const asg=clamp(Math.round(60+(att-78)*.6+hrs*.7+gauss()*8),30,100);
+ const gpa=clamp(+(7+gauss()).toFixed(1),4,10);
+ const score=clamp(Math.round(.3*att+.8*hrs+.25*asg+2*gpa+gauss()*4),20,99);
+ D.push({id:'S'+String(1001+i),dept,att,hrs,asg,gpa,score,sub:subs.map((_,j)=>clamp(Math.round(score+off[j]+gauss()*6),15,100))});
+}
+const mean=a=>a.reduce((x,y)=>x+y,0)/a.length;
+const corr=(x,y)=>{const mx=mean(x),my=mean(y);let n=0,dx=0,dy=0;x.forEach((v,i)=>{n+=(v-mx)*(y[i]-my);dx+=(v-mx)**2;dy+=(y[i]-my)**2});return n/Math.sqrt(dx*dy)};
+const fit=(x,y)=>{const mx=mean(x),my=mean(y);let n=0,d=0;x.forEach((v,i)=>{n+=(v-mx)*(y[i]-my);d+=(v-mx)**2});const m=n/d;return[m,my-m*mx]};
+let cur='All';
+const $=id=>document.getElementById(id);
+$('chips').innerHTML=['All',...depts].map(d=>`<button class="chip${d==='All'?' on':''}" data-d="${d}">${d==='All'?'All departments':d}</button>`).join('');
+$('chips').onclick=e=>{const d=e.target.dataset.d;if(!d)return;cur=d;[...$('chips').children].forEach(b=>b.classList.toggle('on',b.dataset.d===d));render()};
+
+function render(){
+ const base=cur==='All'?D:D.filter(x=>x.dept===cur),A=base.map(adj),sc=A.map(x=>x.score),at=A.map(x=>x.att);
+ const risk=A.filter(x=>x.score<RS||x.att<RA);
+ const pass=A.filter(x=>x.score>=PM).length/A.length*100;
+ $('rsub').textContent=`Flagged when the final score is below ${RS} or attendance is below ${RA}%. Lowest scores first.`;
+ const b0=mean(base.map(x=>x.score)),a0=mean(sc);
+ $('scn').textContent=BA||BH?`Scenario active: +${BA} attendance points and +${BH} study hours a week lift the average score from ${b0.toFixed(1)} to ${a0.toFixed(1)} (${a0-b0>=0?'+':''}${(a0-b0).toFixed(1)}), holding other factors constant.`:'Move the scenario sliders to test how better attendance or more study time would change results.';
+ $('kpis').innerHTML=[[A.length,'Students'],[mean(sc).toFixed(1),'Average score'],[pass.toFixed(0)+'%','Pass rate (≥ '+PM+')'],[mean(at).toFixed(0)+'%','Average attendance'],[risk.length,'Students at risk']].map(k=>`<div class="card kpi"><b>${k[0]}</b><span>${k[1]}</span></div>`).join('');
+
+ // grade distribution
+ const gr=[['O',90],['A',80],['B',70],['C',60],['D',50],['F',0]],cnt=gr.map(g=>0);
+ A.forEach(x=>{const i=gr.findIndex(g=>x.score>=g[1]);cnt[i]++});
+ const mx=Math.max(...cnt,1);
+ $('c1').innerHTML=`<svg viewBox="0 0 360 200">${cnt.map((c,i)=>{const h=c/mx*140,x=20+i*56;return `<rect x="${x}" y="${160-h}" width="40" height="${h}" rx="4" style="fill:${i===5?'var(--r)':'var(--a)'}"/><text x="${x+20}" y="${154-h}" text-anchor="middle">${c}</text><text x="${x+20}" y="180" text-anchor="middle">${gr[i][0]}</text>`}).join('')}</svg>`;
+
+ // scatter + trend
+ const [m,b]=fit(at,sc),r=corr(at,sc),X=v=>40+(v-50)/50*300,Y=v=>170-(v-20)/80*160;
+ $('n2').textContent=`Each dot is a student. Correlation r = ${r.toFixed(2)}.`;
+ $('c2').innerHTML=`<svg viewBox="0 0 360 200"><line x1="40" y1="170" x2="340" y2="170" stroke="var(--line)"/><line x1="40" y1="10" x2="40" y2="170" stroke="var(--line)"/>${[50,75,100].map(v=>`<text x="${X(v)}" y="188" text-anchor="middle">${v}%</text>`).join('')}${[20,60,100].map(v=>`<text x="34" y="${Y(v)+4}" text-anchor="end">${v}</text>`).join('')}${A.map(x=>`<circle cx="${X(x.att)}" cy="${Y(x.score)}" r="3" style="fill:var(--c);opacity:.55"/>`).join('')}<line x1="${X(50)}" y1="${Y(m*50+b)}" x2="${X(100)}" y2="${Y(m*100+b)}" style="stroke:var(--b);stroke-width:2.5"/></svg>`;
+
+ // subjects
+ const sa=subs.map((_,j)=>mean(A.map(x=>x.sub[j])));
+ $('c3').innerHTML=`<svg viewBox="0 0 360 200">${sa.map((v,i)=>`<text x="0" y="${34+i*36}">${subs[i]}</text><rect x="95" y="${20+i*36}" width="${v/100*215}" height="20" rx="4" style="fill:var(--a)"/><text x="${100+v/100*215}" y="${34+i*36}">${v.toFixed(0)}</text>`).join('')}</svg>`;
+
+ // drivers
+ const dr=[['Attendance',corr(at,sc)],['Study hours',corr(A.map(x=>x.hrs),sc)],['Assignments',corr(A.map(x=>x.asg),sc)],['Previous GPA',corr(A.map(x=>x.gpa),sc)]].sort((p,q)=>q[1]-p[1]);
+ $('c4').innerHTML=`<svg viewBox="0 0 360 160">${dr.map((d,i)=>`<text x="0" y="${28+i*36}">${d[0]}</text><rect x="95" y="${14+i*36}" width="${Math.max(d[1],0)*215}" height="20" rx="4" style="fill:var(--c)"/><text x="${100+Math.max(d[1],0)*215}" y="${28+i*36}">${d[1].toFixed(2)}</text>`).join('')}</svg>`;
+
+ // insights
+ const low=A.filter(x=>x.att<75),hi=A.filter(x=>x.att>=75),ws=subs[sa.indexOf(Math.min(...sa))],bs=subs[sa.indexOf(Math.max(...sa))];
+ $('ins').innerHTML=[
+  `Every extra 10 points of attendance goes with about <b>${(m*10).toFixed(1)} more marks</b> on the final score.`,
+  low.length&&hi.length?`Students under 75% attendance average <b>${mean(low.map(x=>x.score)).toFixed(0)}</b>, against <b>${mean(hi.map(x=>x.score)).toFixed(0)}</b> for the rest.`:'',
+  `The strongest driver of results is <b>${dr[0][0].toLowerCase()}</b> (r = ${dr[0][1].toFixed(2)}); the weakest is ${dr[3][0].toLowerCase()}.`,
+  `<b>${ws}</b> has the lowest average (${Math.min(...sa).toFixed(0)}) and <b>${bs}</b> the highest (${Math.max(...sa).toFixed(0)}).`,
+  `<b>${risk.length}</b> of ${A.length} students (${(risk.length/A.length*100).toFixed(0)}%) are flagged at risk. Early attendance counselling is the cheapest first step.`
+ ].filter(Boolean).map(t=>`<li>${t}</li>`).join('');
+
+ // at-risk table
+ $('tb').innerHTML=risk.sort((p,q)=>p.score-q.score).slice(0,8).map(x=>`<tr><td>${x.id}</td><td>${x.dept}</td><td>${x.att}%</td><td>${x.hrs}</td><td><span class="pill r">${x.score}</span></td><td>${x.att<RA?'Attendance counselling and a weekly check-in':x.hrs<10?'Study-plan coaching and peer group':'Subject tutoring and mentor review'}</td></tr>`).join('')||'<tr><td colspan="6">No students flagged.</td></tr>';
+}
+let PM=50,RS=55,RA=70,BA=0,BH=0;
+function ols(X,y){const n=X[0].length+1,T=Array.from({length:n},()=>Array(n+1).fill(0));X.forEach((r,k)=>{const v=[1,...r];for(let i=0;i<n;i++){for(let j=0;j<n;j++)T[i][j]+=v[i]*v[j];T[i][n]+=v[i]*y[k]}});for(let i=0;i<n;i++){let p=i;for(let r=i+1;r<n;r++)if(Math.abs(T[r][i])>Math.abs(T[p][i]))p=r;[T[i],T[p]]=[T[p],T[i]];for(let r=0;r<n;r++){if(r===i)continue;const f=T[r][i]/T[i][i];for(let c=i;c<=n;c++)T[r][c]-=f*T[i][c]}}return T.map((r,i)=>r[n]/r[i])}
+const M=ols(D.map(x=>[x.att,x.hrs,x.asg,x.gpa]),D.map(x=>x.score));
+function adj(x){const da=Math.min(BA,100-x.att),dh=Math.min(BH,40-x.hrs),d=M[1]*da+M[2]*dh;return{...x,att:x.att+da,hrs:x.hrs+dh,score:clamp(Math.round(x.score+d),0,100),sub:x.sub.map(v=>clamp(Math.round(v+d),0,100))}}
+const ctl=[['pm','o1',v=>PM=v,v=>''+v],['rs','o2',v=>RS=v,v=>''+v],['ra','o3',v=>RA=v,v=>v+'%'],['ba','o4',v=>BA=v,v=>'+'+v+' pts'],['bh','o5',v=>BH=v,v=>'+'+v+' hrs/wk']];
+const sync=([id,o,set,f])=>{const v=+$(id).value;set(v);$(o).textContent=f(v)};
+ctl.forEach(c=>{sync(c);$(c[0]).oninput=()=>{sync(c);render()}});
+$('reset').onclick=()=>{[['pm',50],['rs',55],['ra',70],['ba',0],['bh',0]].forEach(([i,v])=>$(i).value=v);cur='All';[...$('chips').children].forEach(b=>b.classList.toggle('on',b.dataset.d==='All'));ctl.forEach(sync);render()};
+const W=[['wa','p1',v=>v+'%'],['wh','p2',v=>v+' hrs'],['ws','p3',v=>v+'%'],['wg','p4',v=>v.toFixed(1)]];
+function pred(){const v=W.map(([id,o,f])=>{const x=+$(id).value;$(o).textContent=f(x);return x});const p=clamp(M[0]+M[1]*v[0]+M[2]*v[1]+M[3]*v[2]+M[4]*v[3],0,100),g=p>=90?'O':p>=80?'A':p>=70?'B':p>=60?'C':p>=50?'D':'F',risk=p<RS||v[0]<RA;$('pr').innerHTML=`<b>${p.toFixed(0)}</b><span>Predicted score · Grade ${g}</span><span class="pill${risk?' r':''}">${risk?'At risk':'On track'}</span>`}
+W.forEach(w=>$(w[0]).oninput=pred);pred();
+render();
+</script>
+</body>
+</html>
